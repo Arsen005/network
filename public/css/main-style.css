@@ -39,6 +39,11 @@ input {
 }
 
 
+ul {
+	list-style-type: none;
+}
+
+
 aside {
 	position: fixed;
 	width: 400px;
@@ -52,11 +57,32 @@ aside {
 		margin-top: 100px;
 	}
 
-	.avatar img {
-		border-radius: 50%;
-		width: 145px;
-		cursor: pointer;
-	}
+		.avatar img {
+			border-radius: 50%;
+			width: 145px;
+			cursor: pointer;
+		}
+
+		.auth-form-ul li {
+			margin-bottom: 5px;
+		}
+
+			.auth-form-ul li input {
+				padding: 7px;
+				border: 1px solid #C9C9C9;
+				background: #FFFFFF;
+				border-left: 4px solid #C9C9C9;
+			}
+
+			.auth-form-ul li input[type="submit"] {
+				margin-top: 10px;
+			}
+			
+			.auth-form-ul li input[type="submit"]:hover {
+				background: #C9C9C9;
+				cursor: pointer;
+			}
+
 
 	.user-info {
 		margin: 40px 0;
@@ -120,3 +146,9 @@ aside {
 			.response-btn:active {
 				color: #000000;
 			}
+
+
+.errors {
+	color: red;
+	font-weight: bold;
+}
