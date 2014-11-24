@@ -5,39 +5,29 @@ class UserController extends BaseController {
 	public function login()
 	{
 
-		return 'login';
+		$data = Input::all();
+
+	 	if ( User::login($data) ):
+	 		return Redirect::to('/');
+	 	else:
+	 		return Redirect::back()->withErrors([ 'message' => 'fail' ], 'login');
+	 	endif;
+		
 	}
 
 	public function register()
 	{
 		$data = Input::all();
 
-		$validator = Validator::make(
-			$data,
-			[
-				'first_name' => 'required|min:2|max:100',
-				'second_name' => 'required|min:2|max:100',
-				'email' => 'required|min:2|email|unique:users|max:150',
-				'password_first' => 'required|min:6|max:64|same:password_second',
-				'password_second' => 'required|min:6|max:64'
-			]);
+		$validator = User::validate($data);
 
 		if ( $validator->fails() ):
-			return $validator->messages();
-		endif;	
+			return Redirect::back()->withErrors($validator, 'register');
+		endif;
 
-		$user = new User();
+		User::register($data);
 
-		$user->first_name = $data['first_name'];
-		$user->second_name = $data['second_name'];
-		$user->email = mb_strtolower($data['email']);
-		$user->password = Hash::make($data['password_first']);
-
-		$user->save();
-
-		Auth::login($user, true);
-
-		return $data;
+		return Redirect::to('/');
 	}
 
 }

@@ -151,4 +151,5 @@ aside {
 .errors {
 	color: red;
 	font-weight: bold;
+	margin: 20px 0;
 }
