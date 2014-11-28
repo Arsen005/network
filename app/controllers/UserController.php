@@ -15,6 +15,17 @@ class UserController extends BaseController {
 		
 	}
 
+	public function logout() 
+	{
+		if ( ! Auth::check() ):
+			return Redirect::to('/');
+		endif;
+
+		Auth::logout();
+		
+		return Redirect::to('/');
+	}
+
 	public function register()
 	{
 		$data = Input::all();

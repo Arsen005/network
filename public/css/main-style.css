@@ -1,3 +1,4 @@
+/* <- FONT-FACE -> ======================================= */
 @font-face {
 	src: url('../fonts/OpenSans-Light.ttf');
 	font-family: 'OpenSans-Light';
@@ -18,8 +19,11 @@
 	font-weight: normal;
 	font-style: normal;
 }
+/* -> FONT-FACE <- ======================================= */
 
 
+
+/* <- ELEMENTS -> ======================================== */
 * {
 	padding: 0;
 	margin: 0;
@@ -41,6 +45,16 @@ input {
 
 ul {
 	list-style-type: none;
+}
+/* -> ELEMENTS <- ======================================== */
+
+
+
+/* <- WRAPPER -> ======================================== */
+.wrapper {
+	width: 1200px;
+	height: auto;
+	margin: 0 auto;
 }
 
 
@@ -113,43 +127,53 @@ aside {
 			font-family: 'OpenSans-Regular', 'Trebuchet MS', 'Arial';
 		}
 
-		.user-new-post input[type="button"] {
+		.user-new-post textarea {
+			padding: 10px;
+			font-size: 0.8em;
+			font-family: 'OpenSans-Regular', 'Trebuchet MS', 'Arial';
+			border: 1px solid #cccccc;
+		}
+
+		.user-new-post input[type="submit"] {
 			float: right;
 			padding: 5px;
 			margin: 10px 30px 0 0;
 		}
 
 
-.wrapper {
-	width: 1200px;
-	height: auto;
-	margin: 0 auto;
+.content {
+	padding: 20px 0 0 420px;
 }
 
-	.content {
-		padding: 20px 0 0 420px;
+	.content h1 {
+		margin-bottom: 20px;
 	}
 
-		.content h1 {
+		.post {
 			margin-bottom: 20px;
 		}
 
-			.post {
-				margin-bottom: 20px;
-			}
+		.post p {
+			margin: 10px 0;
+			padding: 0 40px 0 0;
+		}
 
-			.post p {
-				margin: 10px 0;
-				padding: 0 40px 0 0;
-			}
-
-			.response-btn:active {
-				color: #000000;
-			}
+		.response-btn:active {
+			color: #000000;
+		}
+/* -> WRAPPER <- ======================================== */
 
 
+
+/* <- HELPERS -> ======================================== */
 .errors {
 	color: red;
 	font-weight: bold;
 	margin: 20px 0;
 }
+
+
+.clear {
+	clear: both;
+}
+/* -> HELPERS <- ======================================== */
