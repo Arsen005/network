@@ -1,1 +1,0 @@
-{{ HTML::style('css/main-style.css') }}
