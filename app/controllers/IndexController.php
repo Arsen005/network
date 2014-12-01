@@ -4,7 +4,11 @@ class IndexController extends BaseController {
 
 	public function index()
 	{
-		return View::make('index');
+		if ( Auth::check() )
+			return View::make('index')->with('posts', Auth::user()->posts());
+		else
+			return 'foo';
+
 	}
 
 }

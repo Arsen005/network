@@ -23,7 +23,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password', 'remember_token');
 
-	public static function register( $data ) 
+	public static function register( $data )
 	{
 		$user = new User();
 		$user->first_name = $data['first_name'];
@@ -35,7 +35,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		Auth::login($user, true);
 	}
 
-	public static function login( $data ) 
+	public static function login( $data )
 	{
 		if ( isset($data['remember_me']) )
 			return Auth::attempt([ 'email' => $data['email'], 'password' => $data['password'] ], true);
@@ -44,7 +44,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 
 
-	public static function validate( $data ) 
+	public static function validate( $data )
 	{
 		return Validator::make(
 			$data,
@@ -55,6 +55,16 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 				'password_first' => 'required|min:6|max:64|same:password_second',
 				'password_second' => 'required|min:6|max:64'
 			]);
+	}
+
+	/**
+	 * User-post relationship
+	 *
+	 */
+	public function posts()
+	{
+		$hasMany = $this->hasMany('Post', 'author_id');
+		return $hasMany->orderBy('created_at', 'DESC')->getResults();
 	}
 
 }

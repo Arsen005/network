@@ -2,7 +2,7 @@
 
 	$(document).ready(function() {
 		$('#newPostForm .errors').hide();
-		
+
 		$('body').on('click', '#sendNewPost', function() {
 			var data = $('#newPostForm').serialize(),
 				url = $('#newPostForm').attr('action'),
@@ -15,6 +15,8 @@
 						break;
 					case 'okay':
 						alert = 'Пост был добавлен!';
+						$('#newPostForm textarea').val('');
+						updateContent();
 						break;
 				}
 
@@ -25,5 +27,11 @@
 		});
 
 	});
+
+	function updateContent() {
+		$.post('/content/reload', {} , function( data ) {
+			$('.content').html(data);
+		});
+	}
 
 })();
