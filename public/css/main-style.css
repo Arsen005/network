@@ -91,7 +91,7 @@ aside {
 			.auth-form-ul li input[type="submit"] {
 				margin-top: 10px;
 			}
-			
+
 			.auth-form-ul li input[type="submit"]:hover {
 				background: #C9C9C9;
 				cursor: pointer;
@@ -117,22 +117,35 @@ aside {
 		text-align: left;
 	}
 
-		.user-new-post div:first-child {
+		.user-new-post .new-post-text-holder {
 			font-size: 0.8em;
-			width: 320px;
-			height: 130px;
-			margin: 0 auto;
-			padding: 10px;
-			border: 1px solid #cccccc;
 			font-family: 'OpenSans-Regular', 'Trebuchet MS', 'Arial';
+			padding: 20px;
+			border: 1px solid #cdcdcd;
+			height: 100px;
+			width: 300px;
+			margin: 0 auto;
 		}
 
+		.user-new-post .new-post-text {
+			height: 100%;
+			word-wrap: break-word;
+			cursor: text;
+		}
+
+		.user-new-post .new-post-placeholder {
+			position: absolute;
+			display: block;
+		}
+
+		/*
 		.user-new-post textarea {
 			padding: 10px;
 			font-size: 0.8em;
 			font-family: 'OpenSans-Regular', 'Trebuchet MS', 'Arial';
 			border: 1px solid #cccccc;
 		}
+		*/
 
 		.user-new-post input[type="submit"] {
 			float: right;

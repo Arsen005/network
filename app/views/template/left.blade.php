@@ -14,7 +14,13 @@
 
 	{{ Form::open([ 'url' => '/add_post', 'id' => 'newPostForm' ]) }}
 
-		{{ Form::textarea('text', '', [ 'placeholder' => 'как дела?', 'rows' => '7', 'cols' => '55' ]) }}
+		<!--{{ Form::textarea('text', '', [ 'placeholder' => 'как дела?', 'rows' => '7', 'cols' => '55' ]) }} -->
+
+		<div class="new-post-text-holder">
+			<div class="new-post-placeholder">как дела?</div>
+			<div class="new-post-text" tabindex="-1" contenteditable="true"></div>
+		</div>
+
 		<p class="errors"></p>
 		{{ Form::submit('Отправить!', [ 'id' => 'sendNewPost' ]) }}
 		<div class="clear"></div>

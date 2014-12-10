@@ -4,11 +4,11 @@
 		$('#newPostForm .errors').hide();
 
 		$('body').on('click', '#sendNewPost', function() {
-			var data = $('#newPostForm').serialize(),
-				url = $('#newPostForm').attr('action'),
+			var url = $('#newPostForm').attr('action'),
+				text = $('#newPostForm .new-post-text').text();
 				alert = '';
 
-			$.post(url, data, function( data ) {
+			$.post(url, { text: text }, function( data ) {
 				switch(data) {
 					case 'empty':
 						alert = 'Введите текст поста!';
@@ -24,6 +24,19 @@
 			});
 
 			return false;
+		});
+
+		$('body').on('focusin', '#newPostForm .new-post-text', function() {
+			$(this).parent().find('.new-post-placeholder').hide();
+		});
+
+		$('body').on('focusout', '#newPostForm .new-post-text', function() {
+			if ( $(this).text() === '' )
+				$(this).parent().find('.new-post-placeholder').show();
+		});
+
+		$('body').on('click', '#newPostForm .new-post-placeholder', function() {
+			$(this).parent().find('.new-post-text').focus();
 		});
 
 	});
